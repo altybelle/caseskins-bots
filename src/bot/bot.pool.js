@@ -12,10 +12,10 @@ class BotPool {
             this._pool.push(
                 new SteamBot(
                     {
-                        accountName: bot.account_name,
+                        accountName: bot.accountName,
                         password: bot.password,
-                        identitySecret: bot.identity_secret,
-                        twoFactorCode: SteamTotp.generateAuthCode(bot.shared_secret)
+                        identitySecret: bot.identitySecret,
+                        twoFactorCode: SteamTotp.generateAuthCode(bot.sharedSecret)
                     }
                 )
             )

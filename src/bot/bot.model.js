@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Bot', {
-    steamid: String,
-    account_name: String,
+module.exports = mongoose.model('Bots', {
+    steamId: String,
+    accountName: String,
     password: String,
-    shared_secret: String,
-    identity_secret: String,
-    is_online: Boolean,
-    created_at: Date,
-    updated_at: Date
+    sharedSecret: String,
+    identitySecret: String,
+    createdAt: Date,
+    updatedAt: Date
 })
