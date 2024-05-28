@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "node src/app.js",
     "start:two_factor": "node src/two_factor/enable_two_factor.js",
+    "start:auth_codes": "node src/bot/bot.util.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

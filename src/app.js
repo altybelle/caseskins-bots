@@ -31,6 +31,10 @@ app.use(session({
 // app.use(cors(allowedCors));
 app.use(morgan('tiny'));
 
+app.get('/bots/steam_guard', async (req, res) => {
+
+});
+
 app.get('/inventory/:steamid', async (req, res) => {
     const { steamid } = req.params;
 
