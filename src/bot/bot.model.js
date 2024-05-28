@@ -6,6 +6,7 @@ module.exports = mongoose.model('Bots', {
     password: String,
     sharedSecret: String,
     identitySecret: String,
+    mustRun: Boolean,
     createdAt: Date,
     updatedAt: Date
 })

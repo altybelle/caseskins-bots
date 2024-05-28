@@ -9,6 +9,7 @@ class BotPool {
         const bots = await Bot.find();
 
         bots.forEach((bot) => {
+            if (bot.mustRun) {
             this._pool.push(
                 new SteamBot(
                     {
@@ -19,6 +20,7 @@ class BotPool {
                     }
                 )
             )
+        }
         });
     }
 

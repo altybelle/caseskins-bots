@@ -21,7 +21,7 @@ class SteamBot {
         this.client.on('loggedOn', () => {
             console.log(`Logged into Steam as ${config.accountName}`);
             
-            this.client.setPersona(SteamUser.EPersonaState.Online);
+            this.client.setPersona(SteamUser.EPersonaState.Invisible);
             this.client.gamesPlayed(300);
         });
 
@@ -47,8 +47,27 @@ class SteamBot {
                 }
             });
         })
-        
+    }
 
+    sendDepositTrade(partner, tradeToken, assetIds, callback) {
+        const offer = this.manager.createOffer(partner, tradeToken);
+        this.manager.getUserInventoryContents(partner, 730, 2, true, (err, inv) => {
+            if (err) {
+                console.log(err);
+            } else {
+                const items = inv.filter(item => assetIds.includes(item.assetid));
+
+                if (items && items.length > 0) {
+                    items.forEach(item => offer.addTheirItem(item));
+                    offer.setMessage('Deposite os itens no website!');
+                    offer.send((err, status) => {
+                        callback(err, status === 'sent' || status === 'pending', offer.id);
+                    });
+                } else {
+                    callback(new Error('Não foi possível encontrar o item'), false);
+                }
+            }
+        });
     }
 }
 
